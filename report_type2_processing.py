@@ -66,6 +66,6 @@ def extract_from_folder(folder_path):
 
 # === Run the extraction ===
 if __name__ == "__main__":
-    folder = "/Users/yeochanyoun/Desktop/projects/LINAC_prediction/clean_data/varian_reports_v2"  # <-- Change this!
+    folder = "Input file dir path"  # <-- Change this!
     df = extract_from_folder(folder)
-    df.to_csv("/Users/yeochanyoun/Desktop/projects/LINAC_prediction/clean_data/varian_v2.csv", index=False)
+    df.to_csv("Output result path", index=False)
