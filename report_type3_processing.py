@@ -64,9 +64,9 @@ def extract_from_folder(folder_path):
 
 # === Script Execution ===
 if __name__ == "__main__":
-    # ✏️ CHANGE THIS to your PDF folder path
-    folder = "/Users/yeochanyoun/Desktop/projects/LINAC_prediction/clean_data/varian_reports_v3"
-    output_file = "/Users/yeochanyoun/Desktop/projects/LINAC_prediction/clean_data/varian_v3_2.csv"
+    # CHANGE THIS to your PDF folder path
+    folder = "Input file dir path"
+    output_file = "Output result path"
 
     df = extract_from_folder(folder)
     df.to_csv(output_file, index=False)
