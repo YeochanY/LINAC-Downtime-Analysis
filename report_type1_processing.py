@@ -56,7 +56,7 @@ def process_multiple_pdfs(pdf_files):
 # pdf_files = [varian_file, varian_file2]
 
 if __name__ == "__main__":
-    directory_path = "/Users/yeochanyoun/Desktop/projects/LINAC_prediction/clean_data/varian_reports_v1/"
+    directory_path = "Input file dir path"
     pdf_files = [os.path.join(directory_path, f) for f in os.listdir(directory_path) if f.endswith('.pdf')]
     df_results = process_multiple_pdfs(pdf_files)
-    df_results.to_csv("/Users/yeochanyoun/Desktop/projects/LINAC_prediction/clean_data/varian_v1_2.csv", index=False)
+    df_results.to_csv("Output result path", index=False)
