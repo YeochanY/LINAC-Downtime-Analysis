@@ -162,26 +162,6 @@ result = classifier.classify_report(
 - Verify the filename matches exactly (case-sensitive)
 - Update the `INPUT_FILE` path in the script if needed
 
-### JSON Parse Errors
-
-The script automatically retries on parse errors. If you see many ParseError classifications:
-- Check your API key is valid and has credits
-- Try using a different model (gpt-4o is more reliable than gpt-4o-mini)
-
-### Rate Limiting
-
-If you're processing many reports, you may hit API rate limits. The script will show errors in the logs. Solutions:
-- Add a delay between requests (modify the code to add `time.sleep()`)
-- Upgrade your OpenAI account tier
-- Process in smaller batches
-
-## Cost Estimation
-
-Approximate costs per 1,000 reports (using GPT-4o):
-- Input tokens: ~1,500 tokens/report × $2.50/1M tokens = $3.75
-- Output tokens: ~50 tokens/report × $10/1M tokens = $0.50
-- **Total: ~$4.25 per 1,000 reports**
-
 ## Project Structure
 
 ```
@@ -195,25 +175,3 @@ project/
 └── output/
     └── classified_reports.csv   # Results
 ```
-
-## Security Notes
-
-- ⚠️ **Never share your `.env` file or commit it to GitHub**
-- ⚠️ Keep your OpenAI API key confidential
-- Add `.env` to `.gitignore` immediately
-- Rotate your API key if accidentally exposed
-
-## Support
-
-For issues with:
-- **OpenAI API**: Check [OpenAI Documentation](https://platform.openai.com/docs)
-- **This script**: Review the error logs in the console output
-- **LINAC-specific questions**: Consult your medical physics team
-
-## License
-
-[Add your license here]
-
-## Version History
-
-- **v1.0.0** - Initial release with GPT-4o classification
