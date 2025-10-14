@@ -6,8 +6,8 @@ A two-step automated pipeline for extracting and classifying LINAC (Linear Accel
 
 This project consists of two scripts that work together:
 
-1. **PDF Extraction (`extract_varian_reports.py`)**: Extracts structured data from Varian service report PDFs
-2. **AI Classification (`linac_failure_classifier.py`)**: Classifies extracted reports into standardized failure type categories using OpenAI's GPT models
+1. **PDF Extraction (`report_type*_processing.py`)**: Extracts structured data from LINAC service report PDFs
+2. **LLM Classification (`linac_failure_classifier.py`)**: Classifies extracted reports into standardized failure type categories using OpenAI's GPT models
 
 ## Pipeline Workflow
 
@@ -237,26 +237,6 @@ pip install PyMuPDF
 - Check that `clean_data/df_full_desc.csv` exists
 - Verify the path in the classification script matches your output from Step 1
 
-**JSON Parse Errors:**
-The script automatically retries on parse errors. If you see many ParseError classifications:
-- Check your API key is valid and has credits
-- Try using a different model (gpt-4o is more reliable than gpt-4o-mini)
-
-**Rate Limiting:**
-If processing many reports:
-- The script processes reports sequentially to avoid rate limits
-- Upgrade your OpenAI account tier for higher limits
-- Process in smaller batches if needed
-
-## Cost Estimation
-
-Approximate costs per 1,000 reports (using GPT-4o):
-- Input tokens: ~1,500 tokens/report × $2.50/1M tokens = $3.75
-- Output tokens: ~50 tokens/report × $10/1M tokens = $0.50
-- **Total: ~$4.25 per 1,000 reports**
-
-Step 1 (PDF extraction) has no API costs.
-
 ## Project Structure
 
 ```
@@ -296,34 +276,3 @@ python linac_failure_classifier.py
 # 5. Analyze results
 python -c "import pandas as pd; df = pd.read_csv('output/classified_reports.csv'); print(df['failure_type'].value_counts())"
 ```
-
-## Data Quality Tips
-
-1. **Consistent PDF Format**: Ensure all PDFs follow the same Varian report template
-2. **Clean Descriptions**: The AI classification works best with clear, technical descriptions
-3. **Validation**: Manually review a sample of classifications to ensure accuracy
-4. **Iteration**: If classifications are inaccurate, adjust the examples in the classifier
-
-## Security Notes
-
-- ⚠️ **Never share your `.env` file or commit it to GitHub**
-- ⚠️ Keep your OpenAI API key confidential
-- Add `.env` to `.gitignore` immediately
-- Rotate your API key if accidentally exposed
-- Be mindful of PHI (Protected Health Information) in reports if applicable
-
-## Support
-
-For issues with:
-- **PDF Extraction**: Check that PDFs match the expected Varian format
-- **OpenAI API**: Check [OpenAI Documentation](https://platform.openai.com/docs)
-- **Script errors**: Review the error logs in the console output
-- **LINAC-specific questions**: Consult your medical physics team
-
-## License
-
-[Add your license here]
-
-## Version History
-
-- **v1.0.0** - Initial release with two-step pipeline (extraction + classification)
