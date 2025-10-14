@@ -1,6 +1,7 @@
 # LINAC Failure Report Analysis Pipeline
 
 A two-step automated pipeline for extracting and classifying LINAC (Linear Accelerator) failure reports using PDF parsing and AI-powered classification.
+Because the structure of LINAC service reports may vary across institutions, users should modify the corresponding script (report_type_processing.py) to match the specific formatting and field layout of their reports.
 
 ## Overview
 
@@ -39,14 +40,12 @@ The classifier assigns reports to one or more of these categories:
 
 ## Installation
 
-1. **Clone or download this repository**
-
-2. **Install required packages:**
+1. **Install required packages:**
 ```bash
 pip install PyMuPDF pandas python-dotenv tqdm openai
 ```
 
-3. **Create a `.env` file in the project root directory:**
+2. **Create a `.env` file in the project root directory:**
 ```bash
 # On macOS/Linux
 touch .env
@@ -55,7 +54,7 @@ touch .env
 type nul > .env
 ```
 
-4. **Add your OpenAI API key to the `.env` file:**
+3. **Add your OpenAI API key to the `.env` file:**
 
 Open `.env` in a text editor and add:
 ```
@@ -66,7 +65,7 @@ Replace `sk-your-api-key-here` with your actual OpenAI API key.
 
 **Important:** Never commit your `.env` file to version control!
 
-5. **Add `.env` to your `.gitignore` file:**
+4. **Add `.env` to your `.gitignore` file:**
 ```bash
 echo ".env" >> .gitignore
 ```
