@@ -98,7 +98,7 @@ python extract_varian_reports.py
 - Time in/out and duration hours
 - Travel, site, and total work hours
 
-### Step 2: Classify Failures with AI
+### Step 2: Classify Failures with LLM
 
 This step uses AI to classify the extracted reports into failure type categories.
 
@@ -191,7 +191,7 @@ output_csv = "your_output_file.csv"
 
 ### Classification Script
 
-**Change the AI Model:**
+**Change the LLM Model:**
 ```python
 classifier = LINACFailureClassifier(model="gpt-4o-mini")  # Faster, cheaper
 # or
